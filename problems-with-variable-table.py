@@ -25,7 +25,7 @@ If the element at the start index is not equal to the  element at start index + 
 Then move the start pointer by 2, and adding that element the new array
 Return the created array
 
-Variable Table 
+5. Variable Table
 Variable : Value
 array: [1, 1, 2, 3, 3, 4, 4, 6, 6]
 start: 0 2 3 5 7 9
@@ -52,38 +52,55 @@ def remove_duplicates(array):
     return no_duplicates
 
 """
-Quesiton: Given an integer, write a function to determine if it is a power of two.
+Question: Given an integer, write a function to determine if it is a power of two.
 
 1. Reasonable Inputs:
 input   output
-1     -> true
-16    -> true
-512   -> true
-218   -> false
+1     -> True
+16    -> True
+512   -> True
+218   -> False
 
 2-3. Solving and Find Patterns:
 I need to take the input and divide it by 2 and save that answer and just divide by 2 again and again until
-the answer is equal to 1 when it is a product of 2 or when the answer is not meaning there's some remainder
+the answer is equal to 1 when it is a power of 2 or when the answer is not equal to 1 meaning there's some remainder
 so the input would not be a power of 2.
 
 4. Pseudocode
 Set remainder to equal the input which is n
-Create a loop where it stops when remainder is greater than 1, because it mean be that it would either be completely 
-divisible by 2 ie 2/2 = 1 
+Create a loop where it only goes when remainder is modulus by 2 and has a value other than 0
   Within the loop update the remainder to be the answer when n/2 
   Update the value of n to be the remainder
 
-Check to see if remainder equals 1 meanning 2/2 = 1
+Check to see if remainder equals 1 meaning 2/2 = 1
   Return True because it's divisble by 2
 Else
   Return False because n is not completely divisble by 2 in all iterations of division. 
+
+5. Variable Table 
+Variable Value
+input = 1
+n = 1
+remainder = 1 --> returns True
+
+input = 16
+Variable Value
+n = 16 8 4 2 
+remainder = 16 8 4 2 1 --> returns True
+
+input 15
+Variable Value
+n = 15 7.5 3.75 1.875
+remainder = 15 7.5 3.75 1.875 0.9375 --> returns False
+
+
 
 """
 
 def is_power_2(n):
   remainder = n
 
-  while remainder > 1:
+  while remainder % 2 == 0:
     remainder -= n / 2
     n = remainder
 
