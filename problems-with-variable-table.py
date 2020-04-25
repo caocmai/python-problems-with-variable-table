@@ -51,7 +51,45 @@ def remove_duplicates(array):
     # return no_duplicates
     return no_duplicates
 
+"""
+Quesiton: Given an integer, write a function to determine if it is a power of two.
 
+1. Reasonable Inputs:
+input   output
+1     -> true
+16    -> true
+512   -> true
+218   -> false
+
+2-3. Solving and Find Patterns:
+I need to take the input and divide it by 2 and save that answer and just divide by 2 again and again until
+the answer is equal to 1 when it is a product of 2 or when the answer is not meaning there's some remainder
+so the input would not be a power of 2.
+
+4. Pseudocode
+Set remainder to equal the input which is n
+Create a loop where it stops when remainder is greater than 1, because it mean be that it would either be completely 
+divisible by 2 ie 2/2 = 1 
+  Within the loop update the remainder to be the answer when n/2 
+  Update the value of n to be the remainder
+
+Check to see if remainder equals 1 meanning 2/2 = 1
+  Return True because it's divisble by 2
+Else
+  Return False because n is not completely divisble by 2 in all iterations of division. 
+
+"""
+
+def is_power_2(n):
+  remainder = n
+
+  while remainder > 1:
+    remainder -= n / 2
+    n = remainder
+
+  if remainder == 1:
+    return True
+  return False
 
 
 if __name__ == "__main__":
@@ -63,3 +101,14 @@ if __name__ == "__main__":
     print(remove_duplicates(array1))
     print(remove_duplicates(array2))
     print(remove_duplicates(array3))
+
+    # Inputs
+    n1 = 1
+    n2 = 16
+    n3 = 512
+    n4 = 218
+
+    print(is_power_2(n1))
+    print(is_power_2(n2))
+    print(is_power_2(n3))
+    print(is_power_2(n4))
